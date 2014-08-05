@@ -1,5 +1,6 @@
 .close {
-  line-height: 0.8
+  line-height: 0.8;
+  float: none; 
 }
 
 .btn-group {
@@ -168,10 +169,6 @@ p.use-date {
 }
 
 .nav-tabs > li {
-  float: none;
-}
-
-.close {
   float: none;
 }
 
