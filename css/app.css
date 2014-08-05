@@ -1,0 +1,227 @@
+.close {
+  line-height: 0.8
+}
+
+.btn-group {
+  margin-top: 10px;
+}
+
+.form-control::-moz-placeholder {
+  color: #A3A3A3;
+}
+
+ul.nav  {
+  display:table;
+}
+
+ul.nav li{
+  display:table-cell;
+  vertical-align:middle;
+  text-align:center;
+}
+
+.ui-scrollfix {
+  background: none repeat scroll 0 0 white;
+  top: 0;
+  left: 0;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 3px;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+}
+
+.variable-width-row > .form-control {
+  border-radius: 0;
+}
+
+.right-radius, .variable-width-row > .form-control:last-child {
+  border-top-right-radius: 6px !important;
+  border-bottom-right-radius: 6px !important;
+}
+
+.label-check-all {
+  float: left;
+  background:none;
+  margin-bottom: 0px;
+  border: medium none;
+  width: 46px;
+  margin-top: 0px;
+  height: 42px;
+  padding-top: 13px;
+}
+
+.btn-add-tab {
+  top: 10px;
+  margin-left: 10px;
+  margin-bottom: 17px;
+}
+
+input.input-title {
+  width: 70% !important;
+}
+
+input.input-price {
+  width: 30% !important;
+}
+
+input.input-price-limit {
+  width: 30%;
+}
+
+select.form-move-tab {
+  width: 170px;
+  float: left;
+}
+
+.variable-width-row {
+  width: 100%;
+  padding-left: 200px;
+}
+
+p.use-date {
+  width: 200px !important;
+  position: absolute;
+}
+
+.title {
+  width: 70% !important;
+  overflow: hidden;
+}
+
+.price {
+  width: 30% !important;
+  text-align:right;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.total-price { 
+  text-align: right;
+}
+
+.minus {
+  color: #d9534f;
+}
+.tabTitle {
+  padding-right: 10px;
+}
+
+.tab-wrap {
+  margin-top: 25px;
+}
+
+.sp-tabs{ 
+  position: relative;
+}
+
+.summary > p:first-child {
+  margin-top: 20px;
+}
+.summary > p {
+  margin-bottom: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+}
+
+
+@media (max-width: 710px) {
+h1 {
+  margin-top: 5px;
+  margin-bottom: 0px; 
+  font-size: 22px;
+}
+
+hr {
+  margin-top: 10px;
+  margin-bottom: 10px; 
+}
+
+.variable-width-row {
+  padding-left: 0px;
+}
+
+p.use-date { 
+  display: none !important;
+}
+
+.title {
+  width: 62% !important;
+  padding: 8px 3px;
+  font-size: 14px;
+  text-align: left;
+  line-height: 34px;
+}
+
+.price {
+  width: 38% !important;
+  padding: 8px 3px;
+  font-size: 14px;
+  text-align: left;
+  line-height: 34px;
+}
+
+.pc-tabs {
+  white-space: nowrap;
+  overflow: auto;
+}
+
+.nav-tabs > li {
+  float: none;
+}
+
+.close {
+  float: none;
+}
+
+
+.sp-tabs  .btn { 
+  position: relative;
+  top: 6px;
+}
+
+.input-lg, .form-horizontal .form-group-lg .form-control,
+.input-group-lg > .form-control, .input-group-lg > .input-group-addon, .input-group-lg > .input-group-btn > .btn {
+  height: 37px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+input.input-title {
+  width: 100% !important;
+  border-radius: 6px !important;
+}
+
+input.input-price {
+  width: 70% !important;
+  border-top-left-radius: 6px !important;
+  border-bottom-left-radius: 6px !important;
+}
+
+input.input-price-limit {
+  width: 100%;
+}
+
+.label-check-all {
+  width: 27px;
+}
+
+.btn-regist {
+  float: left;
+}
+
+.btn-regist > button {
+  padding-top: 6px !important;
+}
+
+label.input-group-addon {
+  padding-left: 6px !important;
+  padding-right: 6px !important;
+}
+
+.summary > p {
+  font-size: 16px;
+}
+
+}
