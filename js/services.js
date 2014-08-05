@@ -85,9 +85,9 @@ angular.module('App.services', ['ui.bootstrap', 'angularLocalStorage'])
   .service('tabs', ['$rootScope', '$filter', 'storage', 'logs', function ($scope, $filter, storage, logs) {
     var where = $filter('filter');
 
-    storage.bind($scope, "tabs", {defaultValue: [this.defaultTab]});
-
     $scope.defaultTab = {id: 1, title: "default"};
+
+    storage.bind($scope, "tabs", {defaultValue: [$scope.defaultTab]});
 
     $scope.$watch(function () {
       return $scope.tabs;
@@ -103,7 +103,8 @@ angular.module('App.services', ['ui.bootstrap', 'angularLocalStorage'])
       return $scope.tabs;
     };
 
-    this.add = function (title, limit=null) {
+    this.add = function (title, limit) {
+      if(typeof limit === 'undefined') limit = null;
       $scope.tabs.push({
         id: new Date().getTime(),
         title: title,

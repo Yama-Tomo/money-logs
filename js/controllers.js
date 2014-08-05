@@ -115,7 +115,8 @@ angular.module('App.controllers', [])
       };
     };
 
-    $scope.openTab = function (tab=null) {
+    $scope.openTab = function (tab) {
+      if(typeof tab === 'undefined') tab = null;
       var modalInstance = $modal.open({
         templateUrl: 'ModalContent.html',
         controller: ModalInstance,
