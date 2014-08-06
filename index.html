@@ -94,11 +94,12 @@
           <br />
           <input type="number" min="0" placeholder="上限金額を入力" class="form-control input-price-limit input-number" ng-model="input.newLimit">
           <br />
-          <button type="submit" class="btn btn-primary">OK</button>
-        </form>
-        <div class="pull-right" ng-if="is_edit == true && defaultTab.id != currentTabId">
-          <button class="btn btn-danger" ng-click="remove()">このタブを削除</button>
-        </div>
+           <a ng-if="is_edit == true && defaultTab.id != currentTabId" class="btn btn-danger" ng-click="remove()">このタブを削除</a>
+          <div class="pull-right" >
+            <button type="submit" class="btn btn-primary">OK</button>
+          </div>
+          <div class="clearfix"></div>
+          </form>
         <div class="clearfix"></div>
       </div>
       <div class="modal-footer">
