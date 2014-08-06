@@ -1,1 +1,1 @@
-angular.module('App', ['ui.bootstrap', 'ui.scrollfix', 'angularLocalStorage', 'App.services', 'App.directives', 'App.controllers' ]);
+angular.module('App', ['ui.bootstrap', 'angularLocalStorage', 'App.services', 'App.directives', 'App.controllers' ]);

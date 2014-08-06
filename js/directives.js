@@ -1,4 +1,4 @@
-angular.module('App.directives', [])
+angular.module('App.directives', ['ngAnimate'])
   .directive("mySelect", [function() {
     return function (scope, $el, attrs) {
       scope.$watch(attrs.mySelect, function (val) {
@@ -16,5 +16,22 @@ angular.module('App.directives', [])
         }
       });
     };
-  }]);
+  }])
+  .directive("ngEnter", [function() {
+    return function (scope, $el, attrs) {
+      $el.bind("keydown keypress", function (event) {
+        if(event.which === 13) {
+          $target = angular.element(event.target);
+          
+          if ($target.val() != '') {
+            $target.next()[0].select();
+            event.preventDefault();
+          }
+        }
+      });
 
+    };
+  }])
+
+
+;

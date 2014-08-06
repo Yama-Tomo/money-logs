@@ -21,25 +21,64 @@ ul.nav li{
   text-align:center;
 }
 
+.main {
+  margin-top: 85px;
+}
+
+.add_main_margin {
+  margin-top: 115px;
+}
+
+.register-form {
+  width: 60%;
+  margin-top: 0px;
+  padding-top: 20px;
+}
+
+.tool-bar {
+  background-color: #f9f9f9;
+  padding-bottom: 20px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.logo {
+  margin-left: 5px;
+  margin-right: 10px;
+  float: left;
+  font-size: 27px;
+}
+
 .ui-scrollfix {
-  background: none repeat scroll 0 0 white;
   top: 0;
   left: 0;
-  padding-left: 3px;
-  padding-right: 3px;
-  padding-top: 3px;
   position: fixed;
   width: 100%;
   z-index: 10;
 }
 
-.variable-width-row > .form-control {
-  border-radius: 0;
+.log-row > p {
+  margin: 0px;
 }
 
-.right-radius, .variable-width-row > .form-control:last-child {
-  border-top-right-radius: 6px !important;
-  border-bottom-right-radius: 6px !important;
+.log-row:hover  {
+  background-color: #E5F2F7;
+}
+
+.log-row  {
+  border: 1px solid rgb(204, 204, 204);
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  font-size: 16px;
+  padding-left: 5px;
+  padding-right: 5px;
+  cursor: pointer;
+}
+
+.edit_mode {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #E5F2F7;
 }
 
 .label-check-all {
@@ -54,8 +93,8 @@ ul.nav li{
 }
 
 .btn-add-tab {
-  top: 10px;
-  margin-left: 10px;
+  padding-top: 10px;
+  padding-left: 10px;
   margin-bottom: 17px;
 }
 
@@ -76,26 +115,32 @@ select.form-move-tab {
   float: left;
 }
 
+input.input-edit-price {
+  width: 50% !important;
+  float: right !important;
+}
+
+
 .variable-width-row {
   width: 100%;
   padding-left: 200px;
 }
 
 p.use-date {
-  width: 200px !important;
-  position: absolute;
+  display: inline-block;
+  color: #aba4a6;
+  font-size: 14px;
 }
 
 .title {
-  width: 70% !important;
   overflow: hidden;
 }
 
 .price {
-  width: 30% !important;
   text-align:right;
   overflow: hidden;
   white-space: nowrap;
+  float: right;
 }
 
 .total-price { 
@@ -105,16 +150,14 @@ p.use-date {
 .minus {
   color: #d9534f;
 }
+
 .tabTitle {
-  padding-right: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .tab-wrap {
   margin-top: 25px;
-}
-
-.sp-tabs{ 
-  position: relative;
 }
 
 .summary > p:first-child {
@@ -124,6 +167,7 @@ p.use-date {
   margin-bottom: 0px;
   padding-right: 0px;
   padding-bottom: 0px;
+  height: 30px;
 }
 
 
@@ -143,24 +187,24 @@ hr {
   padding-left: 0px;
 }
 
-p.use-date { 
+.edit_mode > .use-date {
   display: none !important;
 }
 
 .title {
-  width: 62% !important;
-  padding: 8px 3px;
-  font-size: 14px;
-  text-align: left;
-  line-height: 34px;
+#  width: 62% !important;
+#  padding: 8px 3px;
+#  font-size: 14px;
+#  text-align: left;
+#  line-height: 34px;
 }
 
 .price {
-  width: 38% !important;
-  padding: 8px 3px;
+#  width: 38% !important;
+#  padding: 8px 3px;
   font-size: 14px;
-  text-align: left;
-  line-height: 34px;
+#  text-align: left;
+#  line-height: 34px;
 }
 
 .pc-tabs {
@@ -172,28 +216,12 @@ p.use-date {
   float: none;
 }
 
-
-.sp-tabs  .btn { 
-  position: relative;
-  top: 6px;
-}
-
-.input-lg, .form-horizontal .form-group-lg .form-control,
-.input-group-lg > .form-control, .input-group-lg > .input-group-addon, .input-group-lg > .input-group-btn > .btn {
-  height: 37px;
-  padding-top: 1px;
-  padding-bottom: 1px;
-}
-
 input.input-title {
-  width: 100% !important;
-  border-radius: 6px !important;
+  width: 60% !important;
 }
 
 input.input-price {
-  width: 70% !important;
-  border-top-left-radius: 6px !important;
-  border-bottom-left-radius: 6px !important;
+  width: 30% !important;
 }
 
 input.input-price-limit {
@@ -201,7 +229,7 @@ input.input-price-limit {
 }
 
 .label-check-all {
-  width: 27px;
+  width: 32px;
 }
 
 .btn-regist {
@@ -219,6 +247,32 @@ label.input-group-addon {
 
 .summary > p {
   font-size: 16px;
+}
+
+.register-form {
+  width: 100%;
+}
+
+.main {
+  margin-top: 110px;
+}
+.add_main_margin {
+  margin-top: 150px;
+}
+
+.btn-add-tab {
+  padding-top: 2px;
+  padding-left: 20px;
+}
+
+.input-group-lg > .form-control, .input-group-lg > .input-group-addon, .input-group-lg > .input-group-btn > .btn {
+  height: 37px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+.input-number {
+  padding-right: 0px;
 }
 
 }

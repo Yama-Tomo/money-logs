@@ -1,4 +1,13 @@
 angular.module('App.controllers', [])
+  .controller('GlobalController', ['$scope', 'logs', '$location', '$anchorScroll', function ($scope, logs, $location, $anchorScroll) {
+    $scope.$on('change:list', function (evt, list) {
+      $scope.toolbar_hide = true;
+      if (logs.getChecked().length > 0) {
+        $scope.toolbar_hide = false;
+      }
+    });
+
+  }])
   .controller('RegisterController', ['$scope', 'logs', function ($scope, logs) {
     $scope.newTitle = $scope.newPrice = '';
 
@@ -14,13 +23,6 @@ angular.module('App.controllers', [])
       $scope.tabs = list;
     });
 
-    $scope.$on('change:list', function (evt, list) {
-      $scope.toolbar_hide = true;
-      if (logs.getChecked().length > 0) {
-        $scope.toolbar_hide = false;
-      }
-    });
- 
     $scope.moveTab = function() {
       logs.changeTab($scope.moveTabId);
     };
@@ -31,7 +33,8 @@ angular.module('App.controllers', [])
   }])
   .controller('TodoListController', ['$scope', 'logs', '$filter', 'tabs', function ($scope, logs, $filter, tabs) {
     var where = $filter('filter');
-    var originalVal;
+    var originalTilte,originalPrice;
+    var editModeStat = [];
 
     $scope.$on('change:list', function (evt, list) {
       $scope.logs = list;
@@ -51,30 +54,29 @@ angular.module('App.controllers', [])
         $scope.limit = currentTab[0].limit;
       }
     });
-  
+ 
     $scope.editing = $scope.element = null;
-  
-    $scope.editLog = function (log, element) {
-      if (element == 'title') {
-        originalVal = log.title;
+
+    $scope.toggleEditMode = function($evt, log)  {
+      var $el = angular.element($evt.target);
+
+      if ($el[0].tagName === 'DIV') {
+        if ($scope.editing === log) {
+          $scope.editing = originalTilte = originalPrice = null;
+          return;
+        }
       }
-      if (element == 'price') {
-        originalVal = log.price;
-      }
+
       $scope.editing = log;
-      $scope.element = element;
-    };
-  
-    $scope.doneEdit = function (logForm, element) {
+      originalTilte = log.title;
+      originalPrice = log.price;
+    }
+     
+    $scope.doneEdit = function (logForm) {
       if (logForm.$invalid) {
-        if (element == 'title') {
-          $scope.editing.title = originalVal;
-        }
-        if (element == 'price') {
-          $scope.editing.price = originalVal;
-        }
+        $scope.editing.title = originalTilte;
+        $scope.editing.price = originalPrice;
       }
-      $scope.editing = originalVal = null;
     };
   }])
   .controller('TabsController', ['$scope', 'logs', 'tabs', '$modal', function ($scope, logs, tabs, $modal) {
@@ -83,6 +85,7 @@ angular.module('App.controllers', [])
     });
 
     $scope.defaultTab = tabs.getDefaultTab();
+    $scope.currentTab = tabs.getCurrentTab();
 
     $scope.allChecked = false; 
     $scope.checkAll = function () {
@@ -97,23 +100,36 @@ angular.module('App.controllers', [])
       logs.setCurrentTabId(tabId); 
     }
 
-    var ModalInstance = function ($scope, $modalInstance, tab) {
+    var ModalInstance = function ($scope, $modalInstance, tab, defaultTab) {
       $scope.input = {}
       $scope.is_edit = false;
+      $scope.defaultTab = defaultTab;
       if (tab !== null ) {
         $scope.input.newTabName = tab.title;
         $scope.input.newLimit   = tab.limit;
+        $scope.currentTabId     = tab.id;
         $scope.is_edit          = true;
       }
-    
+
+      $scope.remove = function () {
+        $modalInstance.close({act: 'remove', id: tab.id});
+      };    
+
       $scope.ok = function () {
-        $modalInstance.close({title: $scope.input.newTabName, limit:$scope.input.newLimit});
+        $modalInstance.close({act: 'update', title: $scope.input.newTabName, limit:$scope.input.newLimit});
       };
     
       $scope.cancel = function () {
         $modalInstance.dismiss('cancel');
       };
     };
+
+    $scope.editTab = function() {
+      $scope.currentTab = tabs.getCurrentTab();
+      if ($scope.currentTab.length > 0) {
+        this.openTab($scope.currentTab[0]);
+      }
+    }
 
     $scope.openTab = function (tab) {
       if(typeof tab === 'undefined') tab = null;
@@ -123,6 +139,9 @@ angular.module('App.controllers', [])
         resolve: {
           tab: function() {
             return tab;
+          },
+          defaultTab: function() {
+            return $scope.defaultTab;
           }
         }
       });
@@ -130,7 +149,9 @@ angular.module('App.controllers', [])
       modalInstance.result.then(function(obj) {
         if (tab === null) {
           tabs.add(obj.title, obj.limit);
-        } else {
+        } else if(obj.act == 'remove') {
+          tabs.remove(tab);
+        } else if(obj.act == 'update') {
           tab.title = obj.title;
           tab.limit = obj.limit;
           // タブを編集したらログの再描画

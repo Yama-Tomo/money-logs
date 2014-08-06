@@ -103,6 +103,10 @@ angular.module('App.services', ['ui.bootstrap', 'angularLocalStorage'])
       return $scope.tabs;
     };
 
+    this.getCurrentTab = function() {
+      return where($scope.tabs, {id: logs.getCurrentTabId()});
+    };
+
     this.add = function (title, limit) {
       if(typeof limit === 'undefined') limit = null;
       $scope.tabs.push({
